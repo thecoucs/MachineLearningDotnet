@@ -1,0 +1,173 @@
+﻿{
+  "TrainingTime": 600,
+  "Scenario": "Regression",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Proyectos\\TaxiFarePrediction\\TaxiFarePrediction\\Datos\\taxi-fare-train.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "vendor_id",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 2
+      },
+      {
+        "ColumnName": "rate_code",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 2
+      },
+      {
+        "ColumnName": "passenger_count",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 2
+      },
+      {
+        "ColumnName": "trip_time_in_secs",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 2
+      },
+      {
+        "ColumnName": "trip_distance",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 2
+      },
+      {
+        "ColumnName": "payment_type",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 2
+      },
+      {
+        "ColumnName": "fare_amount",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 2
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 1,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.919348403095196,
+        "RuntimeInSeconds": 2.545
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.91911646183776907,
+        "RuntimeInSeconds": 20.245
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.91828802540852994,
+        "RuntimeInSeconds": 7.553
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.91797765529320552,
+        "RuntimeInSeconds": 2.359
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": 0.91787672089078909,
+        "RuntimeInSeconds": 3.745
+      }
+    ],
+    "Pipeline": {
+      "parameter": {
+        "0": {
+          "OutputColumnNames": [
+            "vendor_id",
+            "payment_type"
+          ],
+          "InputColumnNames": [
+            "vendor_id",
+            "payment_type"
+          ]
+        },
+        "1": {
+          "OutputColumnNames": [
+            "rate_code",
+            "passenger_count",
+            "trip_distance"
+          ],
+          "InputColumnNames": [
+            "rate_code",
+            "passenger_count",
+            "trip_distance"
+          ]
+        },
+        "2": {
+          "InputColumnNames": [
+            "vendor_id",
+            "payment_type",
+            "rate_code",
+            "passenger_count",
+            "trip_distance"
+          ],
+          "OutputColumnName": "Features"
+        },
+        "3": {
+          "NumberOfLeaves": 915,
+          "MinimumExampleCountPerLeaf": 20,
+          "LearningRate": 0.99999977667298645,
+          "NumberOfTrees": 4,
+          "SubsampleFraction": 0.99999977667298645,
+          "MaximumBinCountPerFeature": 1022,
+          "FeatureFraction": 0.99999999,
+          "L1Regularization": 2E-10,
+          "L2Regularization": 0.00544503227381747,
+          "LabelColumnName": "fare_amount",
+          "FeatureColumnName": "Features"
+        }
+      },
+      "estimators": [
+        "OneHotEncoding",
+        "ReplaceMissingValues",
+        "Concatenate",
+        "LightGbmRegression"
+      ]
+    },
+    "MetricName": "RSquared"
+  },
+  "Type": "TrainingConfig",
+  "Version": 2
+}

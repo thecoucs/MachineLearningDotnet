@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2693p0xetVF/JY5uyyRZIrvyufwXv4moTUH/T5kruZk=",
+  "Source": "TaxiFare_API",
+  "BasePath": "_content/TaxiFare_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

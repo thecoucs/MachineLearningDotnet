@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "TaxiFare_API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50497;http://localhost:50498"
+    }
+  }
+}
